@@ -26,6 +26,7 @@ A branch `main` contém a documentação de referência do projeto (Anexos A e B
 dgs-ai-first/
 ├── README.md
 ├── exercicio-fase-1-entendimento.md        ← Enunciado — Cenário 1
+├── exercicio-fase-3-governanca.md          ← Enunciado — Cenário 3
 │
 ├── 📁 documentacao-novatech/               ← Fonte de verdade do projeto
 │   ├── anexo-a-documentacao-simulada-novatech.md
@@ -42,7 +43,9 @@ dgs-ai-first/
     ├── QA-exercicio-1.3-plano-de-testes-rag.md
     ├── QA-exercicio-2.1-testing-standards-agents-md.md
     ├── QA-exercicio-2.2-spec-sdd-query-endpoint.md
-    └── QA-exercicio-2.3-skill-create-integration-test.md
+    ├── QA-exercicio-2.3-skill-create-integration-test.md
+    ├── QA-exercicio-3.1-revisao-critica-respostas.md
+    └── QA-exercicio-3.2-revisao-critica-testes-ia.md
 ```
 
 ---
@@ -155,6 +158,38 @@ Skill reutilizável para geração de testes de integração por agentes de IA.
 | Checklist | 8 itens binários verificáveis em < 2 min |
 
 Dependências declaradas: `[[testing-standards]]` + `[[novatech-domain-policy]]`.
+
+---
+
+## Cenário 3 — Fase de Governança e Validação
+
+Foco: Harness Engineering (HITL e Structured Outputs), Revisão Crítica de Outputs de IA.
+
+### Exercício 3.1 — Revisão Crítica das Respostas do Assistente
+`qa-exercicios/QA-exercicio-3.1-revisao-critica-respostas.md`
+
+Aplicação da rubrica de 4 dimensões (Cenário 1, Exercício 1.2) a 8 respostas do assistente em staging, com avaliação própria antes do Claude, segunda avaliação do Claude, comparação, e relatório de qualidade gerado no Claude Cowork com parecer de go-live.
+
+| Item | Detalhe |
+|------|---------|
+| Respostas avaliadas | 8 |
+| Reprovações identificadas | R6 (assumiu destino não informado) e R8 (respondeu em inglês, violando guardrail de idioma) |
+| Score médio | 10,0 / 12 |
+| Parecer de go-live | Pronto com ressalvas — 2 itens bloqueantes antes do lançamento |
+
+---
+
+### Exercício 3.2 — Revisão Crítica dos Testes Gerados por IA
+`qa-exercicios/QA-exercicio-3.2-revisao-critica-testes-ia.md`
+
+Revisão de 3 testes de integração gerados pelo Copilot, com avaliação própria antes do Claude, segunda avaliação do Claude, comparação, e reescrita do teste com assertions vagas.
+
+| Teste | Problema identificado |
+|-------|------------------------|
+| 1 | Assertions vagas (`toBeDefined()`) — não verifica correção do conteúdo |
+| 2 | Dados de teste irreais — não exercita o domínio NovaTech |
+| 3 | Mock desconectado/permissivo que mascara ausência de validação de input |
+| Transversal | Testes escritos em Jest num projeto que usa Vitest |
 
 ---
 
