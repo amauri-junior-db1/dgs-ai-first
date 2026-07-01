@@ -45,8 +45,8 @@ dgs-ai-first/
     ├── QA-exercicio-2.1-testing-standards-agents-md.md
     ├── QA-exercicio-2.2-spec-sdd-query-endpoint.md
     ├── QA-exercicio-2.3-skill-create-integration-test.md
-    ├── QA-exercicio-3.1-revisao-critica-respostas.md
-    └── QA-exercicio-3.2-revisao-critica-testes-ia.md
+    ├── QA-exercicio-3.1-revisao-respostas-assistente.md
+    └── QA-exercicio-3.2-revisao-testes-ia.md
 ```
 
 ---
@@ -167,21 +167,21 @@ Dependências declaradas: `[[testing-standards]]` + `[[novatech-domain-policy]]`
 Foco: Harness Engineering (HITL e Structured Outputs), Revisão Crítica de Outputs de IA.
 
 ### Exercício 3.1 — Revisão Crítica das Respostas do Assistente
-`qa-exercicios/QA-exercicio-3.1-revisao-critica-respostas.md`
+`qa-exercicios/QA-exercicio-3.1-revisao-respostas-assistente.md`
 
 Aplicação da rubrica de 4 dimensões (Cenário 1, Exercício 1.2) a 8 respostas do assistente em staging, com avaliação própria antes do Claude, segunda avaliação do Claude, comparação, e relatório de qualidade gerado no Claude Cowork com parecer de go-live.
 
 | Item | Detalhe |
 |------|---------|
 | Respostas avaliadas | 8 |
-| Reprovações identificadas | R6 (assumiu destino não informado) e R8 (respondeu em inglês, violando guardrail de idioma) |
-| Score médio | 10,0 / 12 |
-| Parecer de go-live | Pronto com ressalvas — 2 itens bloqueantes antes do lançamento |
+| Reprovações identificadas | #6 (assumiu destino não informado) e #8 (respondeu em inglês, violando guardrail de idioma) |
+| Score médio | 10,6 / 12 |
+| Parecer de go-live | Não recomendado sem corrigir #6 e #8 — com monitoramento reforçado após a correção |
 
 ---
 
 ### Exercício 3.2 — Revisão Crítica dos Testes Gerados por IA
-`qa-exercicios/QA-exercicio-3.2-revisao-critica-testes-ia.md`
+`qa-exercicios/QA-exercicio-3.2-revisao-testes-ia.md`
 
 Revisão de 3 testes de integração gerados pelo Copilot, com avaliação própria antes do Claude, segunda avaliação do Claude, comparação, e reescrita do teste com assertions vagas.
 
