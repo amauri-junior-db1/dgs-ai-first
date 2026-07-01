@@ -25,7 +25,6 @@ A branch `main` contém a documentação de referência do projeto (Anexos A e B
 ```
 dgs-ai-first/
 ├── README.md
-├── exercicio-fase-1-entendimento.md        ← Enunciado — Cenário 1
 ├── exercicio-fase-2-estruturacao.md        ← Enunciado — Cenário 2
 │
 ├── 📁 documentacao-novatech/               ← Fonte de verdade do projeto
@@ -38,72 +37,13 @@ dgs-ai-first/
 │   ├── PROC-042-v2-frete-especial-revisado.md
 │   └── SLA-2024-tabela-sla-clientes.md
 │
-└── 📁 qa-exercicios/                       ← Entregáveis do papel QA
-    ├── QA-exercicio-1.1-cenarios-de-falha.md
-    ├── QA-exercicio-1.2-criterios-de-aceitacao.md
-    ├── QA-exercicio-1.3-plano-de-testes-rag.md
+└── 📁 qa-exercicios/                       ← Entregáveis do papel QA (Cenário 2)
     ├── QA-exercicio-2.1-testing-standards-agents-md.md
     ├── QA-exercicio-2.2-spec-sdd-query-endpoint.md
     └── QA-exercicio-2.3-skill-create-integration-test.md
 ```
 
----
-
-## Cenário 1 — Fase de Entendimento e Contexto
-
-Foco: Fundamentos de IA Generativa, Engenharia de Prompt, Engenharia de Contexto, RAG e MCP.
-
-### Exercício 1.1 — Identificação de Cenários de Falha de IA
-`qa-exercicios/QA-exercicio-1.1-cenarios-de-falha.md`
-
-| Item | Detalhe |
-|------|---------|
-| Cenários próprios (sem IA) | 4 cenários |
-| Cenários via Claude | 8 cenários |
-| **Total consolidado** | **11 cenários** |
-
-Categorias cobertas:
-- **Alucinação** — 3 cenários (tier inexistente, inversão de regra, desconto fabricado)
-- **Informação contraditória** — 2 cenários (mistura de versões v1/v2, FAQ como fonte formal)
-- **Falha de contexto** — 4 cenários (context rot, lost in the middle, chunk errado, context overflow)
-- **Recusa inadequada** — 1 cenário
-- **Falha de guardrail** — 1 cenário
-
----
-
-### Exercício 1.2 — Design de Critérios de Aceitação para Respostas de IA
-`qa-exercicios/QA-exercicio-1.2-criterios-de-aceitacao.md`
-
-| Item | Detalhe |
-|------|---------|
-| Avaliação manual | 5 respostas avaliadas antes da rubrica |
-| Respostas incorretas identificadas | R3 (alucinação — tier Platinum) e R4 (inversão — carga perigosa) |
-| Rubrica | 4 dimensões × escala 1–3 = máximo 12 pontos |
-| Template | Reutilizável para qualquer lote de respostas |
-
-Dimensões da rubrica:
-
-| Sigla | Dimensão |
-|-------|----------|
-| PF | Precisão Factual |
-| CF | Citação de Fonte |
-| AG | Aderência aos Guardrails |
-| CO | Completude |
-
----
-
-### Exercício 1.3 — Plano de Testes para Pipeline de RAG
-`qa-exercicios/QA-exercicio-1.3-plano-de-testes-rag.md`
-
-| Bloco | Foco | Casos |
-|-------|------|-------|
-| 1 — Ingestão | Extração, chunking, metadados | 4 |
-| 2 — Retrieval | Chunks corretos recuperados | 6 |
-| 3 — Geração | Qualidade da resposta do LLM | 3 |
-| 4 — Contexto | Context rot, lost in the middle, overflow | 4 |
-| 5 — Ponta a ponta | Fluxo completo com ground truth | 5 |
-| 6 — Regressão | Gatilhos e critério de baseline | variável |
-| **Total fixo** | | **22 casos** |
+> Os exercícios 1.1–1.3 (Cenário 1) ficam só na branch [`cenario-1`](../../tree/cenario-1); os 3.1–3.2 (Cenário 3) só na [`cenario-3`](../../tree/cenario-3). Cada branch contém apenas os entregáveis da própria fase.
 
 ---
 
