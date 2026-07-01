@@ -14,9 +14,9 @@ Os exercícios de cada cenário são entregues em branches separadas:
 |--------|------|-------|
 | `cenario-1` | Fase de Entendimento e Contexto | 06/06 |
 | `cenario-2` | Fase de Estruturação do Trabalho | 18/06 |
-| `cenario-3` | Fase de Validação e Entrega | 27/06 |
+| `cenario-3` | Fase de Governança e Validação | 27/06 |
 
-A branch `main` contém a documentação de referência do projeto (Anexos A e B + documentos NovaTech).
+A branch `main` contém a documentação de referência do projeto (Anexos A, B e C + documentos NovaTech).
 
 ---
 
@@ -25,7 +25,6 @@ A branch `main` contém a documentação de referência do projeto (Anexos A e B
 ```
 dgs-ai-first/
 ├── README.md
-├── exercicio-fase-1-entendimento.md        ← Enunciado — Cenário 1
 ├── exercicio-fase-3-governanca.md          ← Enunciado — Cenário 3
 │
 ├── 📁 documentacao-novatech/               ← Fonte de verdade do projeto
@@ -38,127 +37,12 @@ dgs-ai-first/
 │   ├── PROC-042-v2-frete-especial-revisado.md
 │   └── SLA-2024-tabela-sla-clientes.md
 │
-└── 📁 qa-exercicios/                       ← Entregáveis do papel QA
-    ├── QA-exercicio-1.1-cenarios-de-falha.md
-    ├── QA-exercicio-1.2-criterios-de-aceitacao.md
-    ├── QA-exercicio-1.3-plano-de-testes-rag.md
-    ├── QA-exercicio-2.1-testing-standards-agents-md.md
-    ├── QA-exercicio-2.2-spec-sdd-query-endpoint.md
-    ├── QA-exercicio-2.3-skill-create-integration-test.md
+└── 📁 qa-exercicios/                       ← Entregáveis do papel QA (Cenário 3)
     ├── QA-exercicio-3.1-revisao-respostas-assistente.md
     └── QA-exercicio-3.2-revisao-testes-ia.md
 ```
 
----
-
-## Cenário 1 — Fase de Entendimento e Contexto
-
-Foco: Fundamentos de IA Generativa, Engenharia de Prompt, Engenharia de Contexto, RAG e MCP.
-
-### Exercício 1.1 — Identificação de Cenários de Falha de IA
-`qa-exercicios/QA-exercicio-1.1-cenarios-de-falha.md`
-
-| Item | Detalhe |
-|------|---------|
-| Cenários próprios (sem IA) | 4 cenários |
-| Cenários via Claude | 8 cenários |
-| **Total consolidado** | **11 cenários** |
-
-Categorias cobertas:
-- **Alucinação** — 3 cenários (tier inexistente, inversão de regra, desconto fabricado)
-- **Informação contraditória** — 2 cenários (mistura de versões v1/v2, FAQ como fonte formal)
-- **Falha de contexto** — 4 cenários (context rot, lost in the middle, chunk errado, context overflow)
-- **Recusa inadequada** — 1 cenário
-- **Falha de guardrail** — 1 cenário
-
----
-
-### Exercício 1.2 — Design de Critérios de Aceitação para Respostas de IA
-`qa-exercicios/QA-exercicio-1.2-criterios-de-aceitacao.md`
-
-| Item | Detalhe |
-|------|---------|
-| Avaliação manual | 5 respostas avaliadas antes da rubrica |
-| Respostas incorretas identificadas | R3 (alucinação — tier Platinum) e R4 (inversão — carga perigosa) |
-| Rubrica | 4 dimensões × escala 1–3 = máximo 12 pontos |
-| Template | Reutilizável para qualquer lote de respostas |
-
-Dimensões da rubrica:
-
-| Sigla | Dimensão |
-|-------|----------|
-| PF | Precisão Factual |
-| CF | Citação de Fonte |
-| AG | Aderência aos Guardrails |
-| CO | Completude |
-
----
-
-### Exercício 1.3 — Plano de Testes para Pipeline de RAG
-`qa-exercicios/QA-exercicio-1.3-plano-de-testes-rag.md`
-
-| Bloco | Foco | Casos |
-|-------|------|-------|
-| 1 — Ingestão | Extração, chunking, metadados | 4 |
-| 2 — Retrieval | Chunks corretos recuperados | 6 |
-| 3 — Geração | Qualidade da resposta do LLM | 3 |
-| 4 — Contexto | Context rot, lost in the middle, overflow | 4 |
-| 5 — Ponta a ponta | Fluxo completo com ground truth | 5 |
-| 6 — Regressão | Gatilhos e critério de baseline | variável |
-| **Total fixo** | | **22 casos** |
-
----
-
-## Cenário 2 — Fase de Estruturação do Trabalho
-
-Foco: AI Agents, Recorte de Domínio e SDD, AGENTS.md, Skills.
-
-### Exercício 2.1 — Testing Standards para o AGENTS.md
-`qa-exercicios/QA-exercicio-2.1-testing-standards-agents-md.md`
-
-Seção `Testing Standards` machine-readable para o `AGENTS.md` do projeto NovaTech. Define 4 padrões prescritivos para geração de testes por agentes de IA.
-
-| Padrão | Regra |
-|--------|-------|
-| TS-01 | Estrutura AAA obrigatória com labels `// Arrange`, `// Act`, `// Assert` |
-| TS-02 | Assertions de conteúdo — proibido `toBeDefined()` como única verificação |
-| TS-03 | Nomenclatura descritiva — `it(...)` deve descrever o comportamento sem precisar ler o corpo |
-| TS-04 | Dados de domínio reais — inputs e expected values derivados de POL-001, SLA-2024, PROC-042-v2 |
-
-Inclui: reescrita completa do teste ruim fornecido como referência + 3 critérios de review objetivos (RC-01 a RC-03).
-
----
-
-### Exercício 2.2 — Spec SDD do Query Endpoint
-`qa-exercicios/QA-exercicio-2.2-spec-sdd-query-endpoint.md`
-
-Spec de testes derivada dos Verification Criteria do endpoint de query do NovaTech Assistant.
-
-| VC | Comportamento verificado | Fonte |
-|----|--------------------------|-------|
-| VC-01 | Prazo de devolução: 7 dias úteis com citação POL-001 | POL-001 §3.1 |
-| VC-02 | SLA por tier de cliente com citação SLA-2024 | SLA-2024 §2 |
-| VC-03 | Guardrail carga perigosa: recusa + ramal 4500 | POL-001 §3.2 |
-| VC-04 | Multiplicador de frete: versão vigente (PROC-042-v2) | PROC-042-v2 §2.1 |
-| VC-05 | Gap na base: declarar explicitamente que não encontrou | Guardrail do sistema |
-
-10 cenários funcionais (happy path + edge case por VC) + 4 testes de robustez de IA (prompt injection, idioma, ambiguidade, falsa premissa).
-
----
-
-### Exercício 2.3 — Skill: create-integration-test
-`qa-exercicios/QA-exercicio-2.3-skill-create-integration-test.md`
-
-Skill reutilizável para geração de testes de integração por agentes de IA.
-
-| Componente | Conteúdo |
-|------------|----------|
-| Template | Esqueleto com placeholders e guia de preenchimento |
-| Exemplos DO | 2 testes corretos completos (guardrail carga perigosa + SLA Gold) |
-| Anti-padrões DON'T | 4 erros comuns com código, consequência e correção |
-| Checklist | 8 itens binários verificáveis em < 2 min |
-
-Dependências declaradas: `[[testing-standards]]` + `[[novatech-domain-policy]]`.
+> Os exercícios 1.1–1.3 (Cenário 1) ficam só na branch [`cenario-1`](../../tree/cenario-1); os 2.1–2.3 (Cenário 2) só na [`cenario-2`](../../tree/cenario-2). Cada branch contém apenas os entregáveis da própria fase.
 
 ---
 
