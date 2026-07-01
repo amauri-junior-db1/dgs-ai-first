@@ -31,6 +31,7 @@ dgs-ai-first/
 ├── 📁 documentacao-novatech/               ← Fonte de verdade do projeto
 │   ├── anexo-a-documentacao-simulada-novatech.md
 │   ├── anexo-b-chunks-referencia-rag.md
+│   ├── anexo-c-estrutura-repositorio.md
 │   ├── FAQ-atendimento.md
 │   ├── POL-001-politica-devolucao.md
 │   ├── PROC-042-frete-especial-v1.md
@@ -199,6 +200,7 @@ Revisão de 3 testes de integração gerados pelo Copilot, com avaliação próp
 |---------|---------------|
 | `anexo-a-documentacao-simulada-novatech.md` | Fonte de verdade — avaliação de respostas |
 | `anexo-b-chunks-referencia-rag.md` | Gabarito de retrieval (mapa de cobertura RAG) |
+| `anexo-c-estrutura-repositorio.md` | Estrutura do repositório `novatech-assistant` (specs, skills, MCP, Vitest) |
 | `POL-001-politica-devolucao.md` | Regras de devolução, exceções e carga perigosa |
 | `PROC-042-frete-especial-v1.md` | Multiplicadores de frete — versão original (desatualizada) |
 | `PROC-042-v2-frete-especial-revisado.md` | Multiplicadores de frete — versão vigente |
